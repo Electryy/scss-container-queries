@@ -4,11 +4,20 @@
 <head>
     <meta charset="utf-8" />
     <title>My First Parcel App</title>
-    <script src="scss/app.scss"></script>
+    <link rel="stylesheet" href="scss/app.scss" />
+    <script src="js/resizer.js" defer></script>
+    <style>
+        .resizeFreely {
+            resize: both;
+            overflow: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Hello, World!</h1>
+    <h1 class="jeps">Hello, World!</h1>
+    <div class="resizeFreely" data-cq>Resize me</div>
+    <div class="resizeFreely" data-cq>Resize me too</div>
 </body>
 
 </html>
