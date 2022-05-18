@@ -1,0 +1,22 @@
+@mixin containerMinWidth($parent, $thousands, $hundreds, $tens, $ones) {
+  // if thousands are over -> rest don't matter
+  #{$parent}[data-cq-tho*="#{$thousands + 1}"][data-cq-one],
+    // if thousands match but hundreds are over -> rest don't matter
+    #{$parent}[data-cq-tho$="#{$thousands}"][data-cq-hun*="#{$hundreds + 1}"][data-cq-one], 
+    // if thousands and hundreds  match but tens are over -> rest don't matter
+    #{$parent}[data-cq-tho$="#{$thousands}"][data-cq-hun$="#{$hundreds}"][data-cq-ten*="#{$tens + 1}"][data-cq-one],
+    // thousands, hundreds, tens and one match
+    #{$parent}[data-cq-tho$="#{$thousands}"][data-cq-hun$="#{$hundreds}"][data-cq-ten$="#{$tens}"][data-cq-one*="#{$ones}"] {
+    @content;
+  }
+}
+
+@mixin containerMaxWidth($parent, $thousands, $hundreds, $tens, $ones) {
+  #{$parent}[data-cq-tho]:not([data-cq-tho*="#{$thousands}"])[data-cq-one], // If under thousands -> rest don't matter
+    #{$parent}[data-cq-tho$="#{$thousands}"]:not([data-cq-hun*="#{$hundreds}"])[data-cq-one], // If thousands match but hundreds are under -> rest don't matter
+    #{$parent}[data-cq-tho$="#{$thousands}"][data-cq-hun$="#{$hundreds}"]:not([data-cq-ten*="#{$tens}"])[data-cq-one], // If thousands and hundreds match but tens are under -> rest don't matter
+    #{$parent}[data-cq-tho$="#{$thousands}"][data-cq-hun$="#{$hundreds}"][data-cq-ten$="#{$tens}"]:not([data-cq-one*="#{$ones}"]) // If thousands, hundreds, tens match but ones are under -> YES
+  {
+    @content;
+  }
+}
