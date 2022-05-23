@@ -2,29 +2,30 @@ let elements = document.querySelectorAll("[data-cq]");
 const resizeObserver = new ResizeObserver((entries) => {
   for (let entry of entries) {
     const width = Math.round(entry.contentRect.width);
-    let widthArray = width.toString().split("").reverse();
-    let dataAttributes = [{ one: "0" }, { ten: "0" }, { hun: "0" }, { tho: "0" }];
 
-    widthArray = widthArray.map((item) => convertToCssNumber(item));
+    // Convert to numbers array and reverse
+    // 123 becomes [3,2,1]
+    let widths = width.toString().split("").reverse();
 
-    widthArray.forEach((width, index) => {
-      dataAttributes[index] = width;
-    });
-    console.log(widthArray);
-    //entry.target.setAttribute("data-cq-tho", width);
-
-    console.log(dataAttributes);
+    // Set the data attributes. Example: data-cq-one="0-1-2-3-4"
+    entry.target.setAttribute("data-cq-one", convertToCssNumber(widths[0]));
+    entry.target.setAttribute("data-cq-ten", convertToCssNumber(widths[1]));
+    entry.target.setAttribute("data-cq-hun", convertToCssNumber(widths[2]));
+    entry.target.setAttribute("data-cq-tho", convertToCssNumber(widths[3]));
   }
 });
 
 function convertToCssNumber(number) {
+  // widths array might not have the index. This means it's 0.
+  if (!number) {
+    return "0";
+  }
   let numberString = "";
   for (let i = 0; i <= number; i++) {
     numberString += i;
   }
-  // Convert 012345 -> 0-1-2-3-4-5
-  numberString = numberString.split("").join("-");
-  return numberString;
+  // Convert 01234 -> 0-1-2-3-4
+  return numberString.toString().split("").join("-");
 }
 
 elements.forEach((element) => {

@@ -3,3 +3,10 @@
 .jeps {
   color: green;
 }
+
+.resizeFreely {
+}
+
+@include containerMinWidth(0, 5, 0, 0) {
+  background-color: blue;
+}
