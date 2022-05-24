@@ -1,6 +1,6 @@
 # scss-container-queries
 
-Container queries made with scss mixins and just a little bit of javascript.
+Container queries made with scss mixins and just a little bit of javascript. See online demo here: https://scss-container-queries-demo.netlify.app/
 
 ## Install
 
@@ -38,7 +38,7 @@ Import `_container-queries.scss` mixins to your sass project. If the tilde path 
 @import "~/node_modules/scss-container-queries/container-queries";
 ```
 
-Now you have containerMinWidth() and containerMaxWidth() in your disposal and you can start using container queries in you sass.
+Now you have `containerMinWidth()` and `containerMaxWidth()` in your disposal and you can start using container queries in you sass.
 
 Like so:
 
@@ -48,7 +48,13 @@ Like so:
 }
 ```
 
-Once the container with data attribute of `data-cq` is above the width of 700px the styles are active like with regular media queries.
+Once the container's width is above 700px the styles are active just like with regular media queries.
+
+You can stop the encoder by calling stop()
+
+```
+encoder.stop();
+```
 
 ## How it works
 
@@ -93,4 +99,4 @@ With this solution there is seperation of concern between your javascript and cs
 
 Because the way we use css you might encounter problems with specificity as every time you use container queries the style's specificity are at minimum 4 levels deep.
 
-Tip for contering this is to increase specificity on your other styles with repeating your class name 5 times: .myClass.myClass.myClass.myClass.myClass
+Tip for countering this is to increase specificity on your other styles with repeating your class name 5 times: `.myClass.myClass.myClass.myClass.myClass`
