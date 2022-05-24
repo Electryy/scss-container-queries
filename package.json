@@ -1,7 +1,30 @@
 {
-  "name": "scss_container_queries",
+  "name": "scss-container-queries",
   "version": "1.0.0",
-  "description": "Container queries with scss + a little js",
-  "author": "Markus Kumpulainen",
-  "license": "ISC"
+  "description": "Container queries made with sass and a little bit of javascript",
+  "main": "container-width-encoder.js",
+  "author": "Markus Kumpulainen (Electryy) https://github.com/Electryy",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Electryy/scss-container-queries.git"
+  },
+  "homepage": "https://github.com/Electryy/scss-container-queries",
+  "bugs": "https://github.com/Electryy/scss-container-queries/issues/",
+  "keywords": [
+    "sass",
+    "scss",
+    "container-query",
+    "container-queries",
+    "element-query",
+    "element-queries",
+    "element query",
+    "element queries",
+    "container query",
+    "container queries",
+    "media query",
+    "media-query",
+    "media queries",
+    "media-queries"
+  ]
 }
