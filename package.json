@@ -1,6 +1,6 @@
 {
   "name": "scss-container-queries",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Container queries made with sass mixins and a little bit of javascript",
   "main": "container-width-encoder.js",
   "author": "Markus Kumpulainen (Electryy) https://github.com/Electryy",
