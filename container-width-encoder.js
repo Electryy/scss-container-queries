@@ -1,5 +1,11 @@
-export function WidthEncoder(selectorString) {
-  const selector = selectorString ? selectorString : "[data-cq]";
+/**
+ * Encodes the current width of element to a data attributes that scss/css can then understand
+ *
+ * @param {string=} selector - Selector string to target listener. Default is [data-cq]
+ * @returns {object} start and stop functions
+ */
+
+export function containerWidthEncoder(selector = "[data-cq]") {
   const elements = document.querySelectorAll(selector);
 
   const resizeObserver = new ResizeObserver((entries) => {
@@ -18,19 +24,6 @@ export function WidthEncoder(selectorString) {
     }
   });
 
-  function convertToCssNumber(number) {
-    // widths array might not have the index. This means it's 0.
-    if (!number) {
-      return "0";
-    }
-    let numberString = "";
-    for (let i = 0; i <= number; i++) {
-      numberString += i;
-    }
-    // Convert 01234 -> 0-1-2-3-4
-    return numberString.toString().split("").join("-");
-  }
-
   function start() {
     elements.forEach((element) => {
       resizeObserver.observe(element);
@@ -42,4 +35,27 @@ export function WidthEncoder(selectorString) {
     });
   }
   return { start, stop };
+}
+
+/**
+ * Helper function to convert a number to special string that css understands
+ * Example: 4 -> 0-1-2-3-4
+ *
+ * @param {number} number
+ * @returns {string}
+ */
+function convertToCssNumber(number) {
+  // number can be undefined and that's ok. return "0" then.
+  if (!number) {
+    return "0";
+  }
+
+  // Write out all numbers. 4 -> 01234
+  let numberString = "";
+  for (let i = 0; i <= number; i++) {
+    numberString += i;
+  }
+
+  // Convert 01234 -> 0-1-2-3-4
+  return numberString.toString().split("").join("-");
 }

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Container queries demo</title>
+    <link rel="stylesheet" href="app.css" />
+    <script type="module" src="app.js" defer></script>
+    <style>
+        .resizeMe {
+            resize: horizontal;
+            overflow: auto;
+            background-color: rgb(34 211 238);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Container queries demo</h1>
+    <p>Resize the boxes with your mouse</p>
+    <div class="resizeMe" data-cq>Resize me please!</div>
+    <div class="resizeMe" data-cq>Resize me too!</div>
+</body>
+
+</html>
