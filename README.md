@@ -95,7 +95,7 @@ There are many solutions to accomplish container queries with javascript while w
 
 With this solution there is seperation of concern between your javascript and css. You can just use container queries in your styles and javascript is only responsible for updating the width of the container constantly.
 
-## Caviats
+## Caveats
 
 Because the way we use css you might encounter problems with specificity as every time you use container queries the style's specificity are at minimum 4 levels deep.
 
